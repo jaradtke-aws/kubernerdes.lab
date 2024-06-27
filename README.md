@@ -16,7 +16,7 @@ This overview will provide an opinionated deployment to create an environemnt to
 | [Grafana](https://github.com/grafana/grafana) | The open and composable observability and data visualization platform. |
 | [VMware](https://www.vmware.com/) | Virtualization platform |
 | [Kubevirt](https://kubevirt.io/) | KubeVirt technology addresses the needs of development teams that have adopted or want to adopt Kubernetes but possess existing Virtual Machine-based workloads that cannot be easily containerized. |
-| [Containerized  Data Importer](https://github.com/kubevirt/containerized-data-importer/) | |
+| [Containerized  Data Importer](https://github.com/kubevirt/containerized-data-importer/) | About: Data Import Service for kubernetes, designed with kubevirt in mind. |
 
 
 
@@ -24,4 +24,4 @@ This overview will provide an opinionated deployment to create an environemnt to
 
 
 ## References and Notes
-| [Containerized  Data Importer -VDDK](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#vddk-data-volume) | About: Data Import Service for kubernetes, designed with kubevirt in mind. |
+| [Containerized  Data Importer - VDDK How To](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#vddk-data-volume) | Details regarding the process to transfer Data Volumes between platforms |
