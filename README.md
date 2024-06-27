@@ -16,7 +16,7 @@ This overview will provide an opinionated deployment to create an environemnt to
 | [Grafana](https://github.com/grafana/grafana) | The open and composable observability and data visualization platform. |
 | [VMware](https://www.vmware.com/) | Virtualization platform |
 | [Kubevirt](https://kubevirt.io/) | KubeVirt technology addresses the needs of development teams that have adopted or want to adopt Kubernetes but possess existing Virtual Machine-based workloads that cannot be easily containerized. |
-| [Containerized  Data Importer](https://github.com/kubevirt/containerized-data-importer/ |
+| [Containerized  Data Importer](https://github.com/kubevirt/containerized-data-importer/) | |
 
 
 
