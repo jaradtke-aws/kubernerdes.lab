@@ -20,7 +20,7 @@ This overview will provide an opinionated deployment to create an environemnt to
 
 
 
-![Environment Overview](Images/APG - EKS-Anywhere - enclave.drawio.png)
+[Environment Overview](Images/APG - EKS-Anywhere - enclave.drawio.png)
 
 
 ## References and Notes
