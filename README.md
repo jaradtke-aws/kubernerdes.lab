@@ -1,9 +1,9 @@
 # kubernerdes.lab
-Lab environment consisting of Amazon EKS Anywhere and VMware vSphere for running containers and VMs
+Lab environment consisting of Amazon EKS Anywhere and VMware vSphere for hosting containers and VMs
 
 
 ## Purpose 
-This overview will provide an opinionated deployment to create an environemnt to run containers and virtual machines on commodity hardware using Open Source Software where possible.
+This repository will provide an opinionated deployment to create an environemnt to run containers and virtual machines on commodity hardware using Open Source Software where possible.  In general, this approach will rely on the standard implementation guidance and focus on the integration of all the different technologies.
 
 | Project/Software Homepage | Description |
 |:-----------------|:-------------|
@@ -19,6 +19,8 @@ This overview will provide an opinionated deployment to create an environemnt to
 | [Containerized  Data Importer](https://github.com/kubevirt/containerized-data-importer/) | About: Data Import Service for kubernetes, designed with kubevirt in mind. |
 
 
+## Overview
+This implementation pattern represents an "edge deployment" facilitating a hybrid cloud architecture.  This will enabling you to run containers and virtual machines on gear that requires lower resources (space, power, cooling, etc...) in an enclave capable of being independent of external resources.
 
 ![Environment Overview](Images/APG-EKS-Anywhere-enclave.drawio.png)
 
