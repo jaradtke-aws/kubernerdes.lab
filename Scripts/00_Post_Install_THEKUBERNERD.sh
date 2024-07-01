@@ -102,7 +102,7 @@ install_desktop() {
   NEEDSRESTART=$((NEEDSRESTART + 1))
 }
 
-# Create directories to clone this project repo to (for pull-only access)
+# Create directories to clone this project repo to (for pull-only access - and this optional)
 mkdir -p $HOME/Repositories/Personal/cloudxabide/; cd $_
 git clone https://github.com/cloudxabide/kubernerdes.lab.git
 ln -s $HOME/Repositories/Personal/cloudxabide/kubernerdes.lab $HOME
