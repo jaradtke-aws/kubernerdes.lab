@@ -7,6 +7,14 @@
 #                be idempotent.
 #        Todo: 
 
+manual_beginning_steps() {
+# Update system and install/enable SSH Server
+sudo apt -y update
+sudo apt -y upgrade
+sudo systemctl --no-pager status sshd || { sudo apt install -y openssh-server; sudo systemctl enable sshd --now; }
+sudo shutdown now -r
+}
+
 # Set some VARS
 NEEDSRESTART=0
 
@@ -16,11 +24,14 @@ echo "NOTE:  you are going to be asked the login password for $SUDO_USER to (per
 echo "       This should be the ONLY time you are asked for a password"
 echo "$SUDO_USER ALL=(ALL) NOPASSWD: ALL" | sudo tee  /etc/sudoers.d/$SUDO_USER-nopasswd-all
 
-# Install/enable SSH Server
-sudo systemctl --no-pager status sshd || { sudo apt install -y openssh-server; sudo systemctl enable sshd --now; }
+# Install some general "system tools"
+PKGS="etherwake net-tools curl git"
+OPT_PKGS="nmap"
+sudo apt -y install $PKGS $OPT_PKGS
 
-# I use brew to install k9s
-mkdir ~/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+# Install Brew (used later to install software, like k9s)
+mkdir ~/homebrew
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
 ~/homebrew/bin/brew
 
 # Setup User Environment
@@ -38,11 +49,15 @@ if [ -d ~/.bashrc.d ]; then
         done
 fi
 EOF
+
 #  Update my shell environment (optional)
 curl https://raw.githubusercontent.com/cloudxabide/devops/main/Files/.bashrc.d_common | tee ~/.bashrc.d/common
-curl https://raw.githubusercontent.com/cloudxabide/devops/main/Files/.bashrc.d_ubuntu | tee ~/.bashrc.d/ubuntu
+curl https://raw.githubusercontent.com/cloudxabide/devops/main/Files/.bashrc.d_Ubuntu | tee ~/.bashrc.d/Ubuntu
+curl https://raw.githubusercontent.com/cloudxabide/devops/main/Files/.bashrc.d_K8s | tee ~/.bashrc.d/K8s
+. ~/.bashrc
 
 # Enable Firewall (if you use Ubuntu firewall)
+sudo ufw status
 enable_firewall() {
 sudo ufw allow ssh
 sudo ufw allow http 
@@ -55,15 +70,6 @@ sudo ufw enable
 sudo ufw status
 sudo ufw show added
 }
-
-# Update the system
-sudo apt update -y
-sudo apt upgrade -y
-
-# Install some general "system tools"
-PKGS="etherwake net-tools curl git"
-OPT_PKGS="nmap"
-sudo apt -y install $PKGS $OPT_PKGS
 
 # Unload problematic kernel module at reboot via cron (this is specific to my NUCs)
 sudo su - -c '
@@ -90,7 +96,7 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 }
 
-# Install Desktop GUI
+# Install Desktop GUI (in case you opt to use Ubuntu Server for your Admin Host)
 install_desktop() {
   sudo apt install -y ubuntu-desktop
   NEEDSRESTART=$((NEEDSRESTART + 1))
@@ -98,8 +104,8 @@ install_desktop() {
 
 # Create directories to clone this project repo to (for pull-only access)
 mkdir -p $HOME/Repositories/Personal/cloudxabide/; cd $_
-git clone https://github.com/cloudxabide/kubernerdes.git
-ln -s $HOME/Repositories/Personal/cloudxabide/kubernerdes $HOME
+git clone https://github.com/cloudxabide/kubernerdes.lab.git
+ln -s $HOME/Repositories/Personal/cloudxabide/kubernerdes.lab $HOME
 cd $HOME
 
 # Install Trivy (from Aquasecurity)
