@@ -8,6 +8,7 @@
 #        Todo:
 #  References: https://anywhere.eks.amazonaws.com/docs/osmgmt/artifacts/#building-node-images
 
+# Make sure you're not on the Admin Host
 case $(hostname) in 
   thekubernerd)  echo "NOTE:  You likely don't want to use your Admin Host to build images"; exit 9;;
 esac
@@ -45,7 +46,7 @@ case $OS_RELEASE in
   "Ubuntu")
     sudo apt update -y
     sudo apt upgrade -y
-    sudo apt install jq make qemu-kvm libvirt-daemon-system libvirt-clients virtinst cpu-checker libguestfs-tools libosinfo-bin unzip -y
+    sudo apt install -y jq make qemu-kvm libvirt-daemon-system libvirt-clients virtinst cpu-checker libguestfs-tools libosinfo-bin unzip virt-manager
     sudo snap install yq
     sudo usermod -a -G kvm $USER
     grep HostKeyAlgorithms /home/$USER/.ssh/config || { echo "HostKeyAlgorithms +ssh-rsa" >> /home/$USER/.ssh/config; }
@@ -114,6 +115,9 @@ export RELEASE_CHANNEL="1-29"
 export EKSA_RELEASE_VERSION=$(curl -sL https://anywhere-assets.eks.amazonaws.com/releases/eks-a/manifest.yaml | yq ".spec.latestVersion")
 echo "EKSA_RELEASE_VERSION: $EKSA_RELEASE_VERSION"
 # BUILD_TOOLING_COMMIT=$(curl -s $BUNDLE_MANIFEST_URL | yq ".spec.versionsBundles[0].eksD.gitCommit")
+
+
+# export EKSA_SKIP_VALIDATE_DEPENDENCIES=true
 echo "image-builder build --os $OS --os-version $OS_VERSION --hypervisor $HYPERVISOR --release-channel $RELEASE_CHANNEL --eksa-release $EKSA_RELEASE_VERSION"
 image-builder build --os $OS --os-version $OS_VERSION --hypervisor $HYPERVISOR --release-channel $RELEASE_CHANNEL --eksa-release $EKSA_RELEASE_VERSION
 
