@@ -50,6 +50,8 @@ if [ -d ~/.bashrc.d ]; then
 fi
 EOF
 
+sudo usermod -a -G www-data mansible
+
 #  Update my shell environment (optional)
 curl https://raw.githubusercontent.com/cloudxabide/devops/main/Files/.bashrc.d_common | tee ~/.bashrc.d/common
 curl https://raw.githubusercontent.com/cloudxabide/devops/main/Files/.bashrc.d_Ubuntu | tee ~/.bashrc.d/Ubuntu
