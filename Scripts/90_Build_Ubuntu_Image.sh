@@ -116,9 +116,10 @@ export EKSA_RELEASE_VERSION=$(curl -sL https://anywhere-assets.eks.amazonaws.com
 echo "EKSA_RELEASE_VERSION: $EKSA_RELEASE_VERSION"
 # BUILD_TOOLING_COMMIT=$(curl -s $BUNDLE_MANIFEST_URL | yq ".spec.versionsBundles[0].eksD.gitCommit")
 
-
 # export EKSA_SKIP_VALIDATE_DEPENDENCIES=true
 echo "image-builder build --os $OS --os-version $OS_VERSION --hypervisor $HYPERVISOR --release-channel $RELEASE_CHANNEL --eksa-release $EKSA_RELEASE_VERSION"
 image-builder build --os $OS --os-version $OS_VERSION --hypervisor $HYPERVISOR --release-channel $RELEASE_CHANNEL --eksa-release $EKSA_RELEASE_VERSION
+
+scp /home/image-builder/ubuntu-2204-kube-1-29.gz mansible@10.10.12.10:/var/www/html/
 
 exit 0
