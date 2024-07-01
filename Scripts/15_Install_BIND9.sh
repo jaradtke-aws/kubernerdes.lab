@@ -3,7 +3,7 @@
 #     Purpose: Install BIND9 and Zone Files for my Subnet/Domain
 #        Date:
 #      Status: Complete/Done
-# Assumptions:
+# Assumptions: You have sources the ~/ENV.vars
 #        Todo:
 
 sudo apt install -y bind9 bind9utils bind9-doc
@@ -33,8 +33,7 @@ for FILE in `ls *arpa`; do named-checkzone $(echo $FILE | sed 's/db.//g'; ) $FIL
 cd -
 
 # Restart Named Service
-sudo systemctl restart bind9
-sudo systemctl restart named.service 
+sudo systemctl restart named.service
 
 # Reset the host lookups (hopefully)
 sudo systemctl restart systemd-resolved.service
