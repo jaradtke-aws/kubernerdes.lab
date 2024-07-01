@@ -2,7 +2,7 @@
 
 #     Purpose:  Install EKS Toolsn
 #        Date:  2024-05-16
-#      Status:  Working
+#      Status:  GTG 
 # Assumptions:  
 #        Todo:
 
