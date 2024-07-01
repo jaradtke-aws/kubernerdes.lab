@@ -35,7 +35,7 @@ metadata:
   name: kubernerdes-eksa
 spec:
   tinkerbellIP: "10.10.12.201"
-  osImageURL: "http://10.10.12.10:8080/ubuntu-2204-kube-1-28.gz"
+  osImageURL: "http://10.10.12.10:8080/ubuntu-2204-kube-1-29.gz"
   hookImagesURLPath: "http://10.10.12.10:8080/hookos-latest"
 
 ---
