@@ -12,6 +12,8 @@ manual_beginning_steps() {
 sudo apt -y update
 sudo apt -y upgrade
 sudo systemctl --no-pager status sshd || { sudo apt install -y openssh-server; sudo systemctl enable ssh --now; }
+# Add correct search domain
+sudo resolvectl domain eno1 kubernerdes.lab
 sudo shutdown now -r
 }
 
