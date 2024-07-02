@@ -99,13 +99,17 @@ clean-up-accounts
 
 # helm install cilium cilium/cilium --version 1.13.3 \
 MYINTERFACE=eno1
-  
+[ -z $CILIUM_DEFAULT_VERSION ] && { CILIUM_DEFAULT_VERSION=$(cilium version | grep "(default)" | awk -F\: '{ print $2 }' | sed 's/ //'); }
+
+## NOTE:  Prometheus add-on is not (yet) tested (2024-07-02)    
 helm install cilium cilium/cilium --version $CILIUM_DEFAULT_VERSION \
   --namespace kube-system \
   --set eni.enabled=false \
   --set ipam.mode=kubernetes \
   --set egressMasqueradeInterfaces=$MYINTERFACE \
   --set tunnel=geneve \
+  --set prometheus.enabled=true \
+  --set operator.prometheus.enabled=true \
   --set hubble.metrics.enabled="{dns,drop,tcp,flow,icmp,http}" \
   --set hubble.relay.enabled=true \
   --set hubble.ui.enabled=true 
