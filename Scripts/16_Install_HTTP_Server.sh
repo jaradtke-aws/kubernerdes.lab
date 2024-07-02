@@ -23,6 +23,7 @@ sudo systemctl enable --now ufw
 # Update the index page to be a dynamic version run in PHP
 sudo curl -o /var/www/html/index.php ${REPO}main/Files/index.php
 sudo chown -R www-data:www-data /var/www
+sudo chmod -R g+rwx /var/www
 sudo systemctl restart apache2
 exit 0
 
