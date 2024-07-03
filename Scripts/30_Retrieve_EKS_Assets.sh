@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#     Purpose: deploy an HTTP/S Server (running on port 8080)
-#        Date: 2024-07-01
-#      Status: Needs validation
+#     Purpose: Retrieve EKS Anywhere artifacts to host an HTTP/S Server (running on port 8080)
+#        Date: 2024-07-02
+#      Status: GTG | Works
 # Assumptions:
 #        Todo: I need to update this script to allow it to be run frequently (and update assets, if needed)
 
@@ -24,6 +24,6 @@ sudo curl -O -J $(curl -s $BUNDLE_MANIFEST_URL | yq ".spec.versionsBundles[0].ti
 # initramfs
 sudo curl -O -J $(curl -s $BUNDLE_MANIFEST_URL | yq ".spec.versionsBundles[0].tinkerbell.tinkerbellStack.hook.initramfs.amd.uri")
 
-sudo chown -R www-data:www-data .
+sudo chown -R www-data:www-data /var/www/html
 
 exit 0

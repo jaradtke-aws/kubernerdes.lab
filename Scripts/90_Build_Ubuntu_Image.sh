@@ -2,7 +2,7 @@
 
 #     Purpose: To build an EKS Image - in this case based on Ubuntu
 #        Date:
-#      Status: In-Progress
+#      Status: In-Progress | You shoudl run this manually to test
 # Assumptions: That you actually **need** a custom-built Ubuntu image to run your containers
 #              You are using the user: image-builder
 #        Todo:
@@ -123,3 +123,5 @@ image-builder build --os $OS --os-version $OS_VERSION --hypervisor $HYPERVISOR -
 scp /home/image-builder/ubuntu-2204-kube-1-29.gz mansible@10.10.12.10:/var/www/html/
 
 exit 0
+
+NOTE:  The reason you likely do not want to use your Admin Host for building images:  imgage-builder relies on KVM/QEMU which enables DHCP for the libvirt stack.  This will cause a conflict when you run the installer and it deploys the "boots" container which has its own DHCP/PXE environment.

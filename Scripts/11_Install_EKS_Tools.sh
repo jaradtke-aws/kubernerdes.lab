@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#     Purpose:  Install EKS Toolsn
+#     Purpose:  Install EKS Tools
 #        Date:  2024-05-16
 #      Status:  GTG 
 # Assumptions:  
 #        Todo:
 
-# Make sure SNAP is installed
+# Make sure SNAP is installed (EKS Anywhere seems to require the MikeFarah version)
 $(which yq) || sudo snap install yq
 
 # install the AWS CLI

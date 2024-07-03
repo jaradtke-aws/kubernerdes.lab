@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #     Purpose: To install Prometheus/Grafana
-#        Date: 2024-04-24
-#      Status: Work-In-Progress - converting to OSS
+#        Date: 2024-07-01
+#      Status: GTG 
 # Assumptions:
 #        Todo: Update this procedure to use OSS versions of Prometheus and Grafana.  (Create helm charts?)
 #  References:

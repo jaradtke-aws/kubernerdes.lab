@@ -2,7 +2,7 @@
 #
 #     Purpose: To configure the "admin host" (aka thekubernerd) once the OS is installed and host is on the network
 #        Date: 2024-05-16
-#      Status: Complete/Done
+#      Status: GTG | Complete/Done
 # Assumptions: It is assumed this is being run on a "newly deployed Ubuntu Host".  I did not necessarilly create it to 
 #                be idempotent.
 #        Todo: 
@@ -20,11 +20,12 @@ sudo shutdown now -r
 # Set some VARS
 NEEDSRESTART=0
 
-# Allow sudo NOPASSWD
+# Allow sudo NOPASSWD and add user to www-data group
 SUDO_USER=mansible
-echo "NOTE:  you are going to be asked the login password for $SUDO_USER to (permanently) enable sudo"
+echo "NOTE:  you are going to be asked the login password for $SUDO_USER to (permanently) enable nopasswd sudo "
 echo "       This should be the ONLY time you are asked for a password"
 echo "$SUDO_USER ALL=(ALL) NOPASSWD: ALL" | sudo tee  /etc/sudoers.d/$SUDO_USER-nopasswd-all
+sudo usermod -a -G www-data mansible
 
 # Install some general "system tools"
 PKGS="etherwake net-tools curl git"
@@ -51,8 +52,6 @@ if [ -d ~/.bashrc.d ]; then
         done
 fi
 EOF
-
-sudo usermod -a -G www-data mansible
 
 #  Update my shell environment (optional)
 curl https://raw.githubusercontent.com/cloudxabide/devops/main/Files/.bashrc.d_common | tee ~/.bashrc.d/common

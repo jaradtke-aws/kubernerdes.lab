@@ -2,8 +2,8 @@
 
 #     Purpose: Install BIND9 and Zone Files for my Subnet/Domain
 #        Date:
-#      Status: Complete/Done
-# Assumptions: You have sources the ~/ENV.vars
+#      Status: GTG | Complete/Done
+# Assumptions: You have sourced the ~/ENV.vars file
 #        Todo:
 
 sudo apt install -y bind9 bind9utils bind9-doc

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #     Purpose:  Configure Ingress (metalLB and emissary)
-#        Date:  2024-05-16
-#      Status:  Incomplete/In-Progress
+#        Date:  2024-07-01
+#      Status:  GTG | 
 # Assumptions:
 #        Todo:
 #  References:

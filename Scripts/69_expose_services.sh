@@ -2,14 +2,12 @@
 
 #     Purpose:  Expose a few services with "external IPs" using LoadBalancer
 #        Date:  2024-05-16
-#      Status:  WIP
+#      Status:  GTG |  
 # Assumptions:  Services referenced here were deployed using this steps in this repo
 #                 i.e. service name, namespace, port - have to align with values in "ServiceMap" (below)
-#        Todo:
-#  References:
-
-# Status:  Need to work on this and figure out how to assign pre-determined addresses to service
+#        Todo: Need to work on this and figure out how to assign pre-determined addresses to service
 #            Likely do an NSLOOKUP to get the IP from DNS, then assign
+#  References:
 
 cd ~/eksa/$CLUSTER_NAME/latest/
 mkdir service_exposure; cd $_

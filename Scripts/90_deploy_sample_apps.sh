@@ -1,11 +1,11 @@
 #!/bin/sh
 
-#     Purpose:  Configure Ingress (metalLB and emissary)
-#        Date:  2024-05-16
-#      Status:  Incomplete/In-Progress
+#     Purpose:  Deploy the ECS demo 3-tier App
+#        Date:  2024-07-02
+#      Status:  GTG | 
 # Assumptions:
 #        Todo:
-#  References:
+#  References: 
 
 # Manually clone
 #git clone https://github.com/cloudxabide/eks-workshop.git
@@ -70,3 +70,4 @@ do
   kubectl delete -f kubernetes/service.yaml
   cd -
 done
+

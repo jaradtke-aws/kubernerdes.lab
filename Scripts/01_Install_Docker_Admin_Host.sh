@@ -2,7 +2,7 @@
 
 #     Purpose: Install Docker to provide environment to run EKS Installer (and kind cluster)
 #        Date: 2024-02-11
-#      Status: Complete
+#      Status: GTG | Complete
 # Assumptions: You are running Ubuntu 22.04 as your admin host
 #        Todo:
 

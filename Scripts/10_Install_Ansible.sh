@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #     Purpose: Install Ansible
-#        Date:
-#      Status: Complete/Done
+#        Date: 2024-07-02
+#      Status: GTG | Complete/Done
 # Assumptions:
 #        Todo:
 
@@ -15,4 +15,3 @@ sudo apt-get install -y ansible
 ansible --version
 
 exit 0
-

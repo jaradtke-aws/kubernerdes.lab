@@ -2,7 +2,7 @@
 
 #     Purpose: This script will prep the hosts and then install/configure openEBS
 #        Date: 2024-06-04
-#      Status: Work in Progress - updated code to add mount functionality
+#      Status: Work in Progress | Should be complete.  Need to test if it can be run as stand-alone
 # Assumptions: This script assumes that you are using a dummy/disposable cluster, created using 3-nodes 
 #                which are both control-plane and worker nodes (basically my lab setup).
 #              Additionally, this is intended to only run on Bare Metal nodes.
@@ -13,7 +13,6 @@
 #                cut-and-paste sections of code while I am testing.  (in case my code 
 #                looks ineffecient ;-)
 
-# TODO: Make this a dyanmic process to gather the name of all the nodes
 # HOSTS="eks-mgmt-01 eks-mgmt-02 eks-mgmt-03"
 # kubectl get nodes -o=jsonpath='{.items[1].metadata.labels.kubernetes\.io/hostname}'
 HOSTS=$(kubectl get nodes --no-headers | awk '{ print $1 }')
