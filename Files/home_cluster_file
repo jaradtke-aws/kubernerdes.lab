@@ -21,7 +21,7 @@ export EKSA_CONTROL_PLANE_ENDPOINT=10.10.12.140
 export EKSA_CLUSTER_NAME=vsphere-eksa
 export CLUSTER_NAME=${EKSA_CLUSTER_NAME}  # DO NOT MODIFY THIS
 
-export VSPHERE_DATACENTER=DANUCS
+export VSPHERE_DATACENTER=kubecuddle
 export VSPHERE_DATASTORE=Kubernerdes
 export VSPHERE_FOLDER=EKSAnywhere
 export VSPHERE_NETWORK=DPortGroup-Kubernerdes # Needed to use this value, for some reason
