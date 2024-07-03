@@ -24,7 +24,7 @@ sudo systemctl enable --now ufw
 sudo curl -o /var/www/html/index.php ${REPO}main/Files/index.php
 sudo chown -R www-data:www-data /var/www
 sudo chmod -R g+rwx /var/www
-sudo systemctl restart apache2
+sudo systemctl enable apache2 --now
 exit 0
 
 # NOTE:  you can now browse http://10.10.12.10:8080/
