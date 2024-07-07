@@ -5,7 +5,7 @@
 </HEAD>
 <BODY>
 <TABLE>
-<TH colspan=3> Kubernerdes Services and Endpoints</TH>
+<TH colspan=3> Kubernerdes Container Services and Endpoints</TH>
 <TR><TD><font color=blue>Namespace</TD><TD><font color=blue>Service</TD><TD><font color=blue>Endpoint</TD></TR>
 
 <?php
@@ -17,10 +17,20 @@ putenv ("KUBECONFIG=$kubeconfig");
 #$k_output = shell_exec('/usr/local/bin/kubectl get svc -A | grep LoadBalancer | awk \'{ split($6, ports, ":"); print $1 " | " $2 " | <A HREF=http://" $5":" ports[1] ">" $5":" ports[1] "</A>" }\' ');
 $k_output = shell_exec('/usr/local/bin/kubectl get svc -A | grep LoadBalancer | awk \'{ split($6, ports, ":"); print "<TR><TD>" $1 "</TD> <TD>" $2 "</TD>  <TD><A HREF=http://" $5":" ports[1] ">" $5":" ports[1] "</A></TD></TR>" }\' ');
 
-
 echo "<pre>$k_output</pre>";
 
 ?>
+
+<BR> <BR>
+
 </TABLE>
+<TABLE>
+<TH colspan=3> Kubernerdes.Lab Infrastructure Services and Endpoints</TH>
+<TR><TD><font color=blue>Service</TD> <TD><font color=blue>Endpoint</TD></TR>
+<TR> <TD>vSphere Console</TD> <TD>https://10.10.12.30/</TD> </TR>
+<TR> <TD>ESXi Console (vmw-esx-01)</TD> <TD>http://10.10.12.31</TD> </TR>
+<TR> <TD></TD> <TD></TD> </TR>
+</TABLE>
+
 </BODY>
 </HTML>

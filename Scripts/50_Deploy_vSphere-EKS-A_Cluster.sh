@@ -5,7 +5,9 @@
 #      Status: GTG
 # Assumptions:
 #        Todo:
-#  References:
+#  References: https://anywhere.eks.amazonaws.com/docs/getting-started/vsphere/overview/
+#              https://anywhere.eks.amazonaws.com/docs/getting-started/vsphere/vsphere-preparation/#configuring-vsphere-user-group-and-roles 
+
 
 install_utilities() {
 # Interesting tool necessary to retrieve artifacts
