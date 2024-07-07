@@ -15,7 +15,7 @@ options {
         allow-query-cache { trusted; };   # disable zone transfers by default
         allow-recursion { trusted; };    # allows recursive queries from any clients - replace with "trusted" to limit clients
         allow-transfer { trusted; };     # disable zone transfers by default
-        listen-on { 10.10.12.10; };      # ns1 private IP address - listen on private network only
+        listen-on { 10.10.12.10; 127.0.0.1; 127.0.0.53; };      # ns1 private IP address - listen on private network only
 
         forwarders {
                 8.8.8.8;
