@@ -1,3 +1,5 @@
+<!-- This file is most likely not a good idea, or necessarilly safe.  This is intended *only* for my lab environment. -->
+
 <HTML>
 <HEAD>
 <TITLE> Kubernerdes Services | &#169 2024 </TITLE>
