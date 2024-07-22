@@ -66,7 +66,7 @@ spec:
   folder: "${VSPHERE_FOLDER}"
   memoryMiB: 8192
   numCPUs: 2
-  osFamily: ubuntu
+  osFamily: bottlerocket
   resourcePool: "${VSPHERE_RESOURCE_POOL}"
   users:
   - name: capv
@@ -84,7 +84,7 @@ spec:
   folder: "${VSPHERE_FOLDER}"
   memoryMiB: 8192
   numCPUs: 2
-  osFamily: ubuntu
+  osFamily: bottlerocket
   resourcePool: "${VSPHERE_RESOURCE_POOL}"
   users:
   - name: capv
@@ -122,7 +122,7 @@ spec:
   folder: "${VSPHERE_FOLDER}"
   memoryMiB: 8192
   numCPUs: 2
-  osFamily: ubuntu
+  osFamily: bottlerocket
   resourcePool: "${VSPHERE_RESOURCE_POOL}"
   users:
   - name: capv
