@@ -39,10 +39,10 @@ docker rm $(docker ps -a | egrep 'boots|eks' | awk '{ print $1 }' | grep -v CONT
 # Cluster-Specific Variables 
 OS=ubuntu
 NODE_LAYOUT="3_0"
-KUBE_VERSION="1.29"
+KUBEVERSION="1.29"
 export CLUSTER_NAME=kubernerdes-eksa
 export CLUSTER_CONFIG=${CLUSTER_NAME}.yaml
-export CLUSTER_CONFIG_SOURCE="example-clusterconfig-${OS}-${KUBE_VERSION}-${NODE_LAYOUT}.yaml" # Name of file in Git Repo
+export CLUSTER_CONFIG_SOURCE="example-clusterconfig-${OS}-${KUBEVERSION}-${NODE_LAYOUT}.yaml" # Name of file in Git Repo
 export TINKERBELL_HOST_IP=10.10.12.101
 
 # NEED TO MAKE THIS MOVE THE DIR TO AN ARCHIVE OR SOMETHING
