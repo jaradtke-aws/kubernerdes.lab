@@ -94,6 +94,8 @@ kubectl delete clusterrole cilium-operator
 # The following were new additions (2024-04-21)
 kubectl delete role cilium-config-agent -n kube-system # if you ran the pre-flight test
 kubectl delete rolebinding cilium-config-agent -n kube-system
+# New Addition (2024-07-23)
+kubectl delete svc cilium-agent -n kube-system
 }
 clean-up-accounts
 
@@ -121,8 +123,10 @@ kubectl get nodes -o wide # make sure all nodes are "READY"
 while sleep 2; do { echo "Waiting for connectivity..."; kubectl -n kube-system exec ds/cilium -- cilium-health status | egrep "Connection timed out"; } || break; done 
 
 ## Test Cilium Connectivity
-echo "Running Cilium Connectivity Test - This will take a few minutes."
-cilium connectivity test >  cilium_connectivity_test.out
+date  > cilium_connectivity_test.out
+echo "Running Cilium Connectivity Test - This will take a few minutes." >> cilium_connectivity_test.out
+cilium connectivity test >> cilium_connectivity_test.out
+date >> cilium_connectivity_test.out
 cd -
 
 exit 0
