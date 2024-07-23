@@ -71,6 +71,7 @@ EOF4
 sleep 10
 kubectl apply -f metallb-config.yaml
 cd -
+kubectl config set-context --current --namespace=default
 
 ########################### ###########################
 # Install Emissary Ingress
