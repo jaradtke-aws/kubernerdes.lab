@@ -74,6 +74,8 @@ cd -
 
 ########################### ###########################
 # Install Emissary Ingress
+# NOTE:  make sure that this runs successfully - I have seen it fail at times (and I am not sure why)
+
 # Add the Repo:
 helm repo add datawire https://app.getambassador.io
 helm repo update
