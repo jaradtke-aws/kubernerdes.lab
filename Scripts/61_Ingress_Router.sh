@@ -40,7 +40,8 @@ kubectl apply -f metallb-ns.yaml
 
 kubectl config set-context --current --namespace=metallb-system
 
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
+# TODO: Figure out how to dynamically retrieve this value for current version
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.7/config/manifests/metallb-native.yaml
 
 CIDR_POOL="10.10.13.1-10.10.13.255"
 cat << EOF4 | tee metallb-config.yaml
