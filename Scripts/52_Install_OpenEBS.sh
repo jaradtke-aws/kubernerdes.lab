@@ -129,6 +129,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now var-openebs.mount"
 
 done
+# END OF FOR-LOOP
 
 # Make sure the volume/fileystem is created/mounted
 for HOST in $HOSTS
