@@ -24,6 +24,7 @@ kubectl apply -f manifests/
 while sleep 2; do kubectl get all -n monitoring | egrep 'ContainerCreating|Init' || break; done
 cd -
 
+############### ###############
 ## Install Grafana
 GRAFANA_NAMESPACE=monitoring
 SERVICE=my-grafana
@@ -45,6 +46,7 @@ EOF1
 helm upgrade my-grafana grafana/grafana -f my-grafana-storage.yaml -n $GRAFANA_NAMESPACE 
 cd -
 
+############### ###############
 ## Kubernetes Dashbaord (WIP)
 # https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
