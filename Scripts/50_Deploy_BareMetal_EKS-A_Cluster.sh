@@ -39,7 +39,7 @@ docker rm $(docker ps -a | egrep 'boots|eks' | awk '{ print $1 }' | grep -v CONT
 # Cluster-Specific Variables 
 OS=ubuntu
 NODE_LAYOUT="3_0"
-KUBEVERSION="1.29"
+KUBEVERSION="1.28"
 export CLUSTER_NAME=kubernerdes-eksa
 export CLUSTER_CONFIG=${CLUSTER_NAME}.yaml
 export CLUSTER_CONFIG_SOURCE="example-clusterconfig-${OS}-${KUBEVERSION}-${NODE_LAYOUT}.yaml" # Name of file in Git Repo
@@ -57,8 +57,8 @@ ln -s $EKS_DIR ${EKS_BASE}/latest
 cd ${EKS_DIR}
 mkdir $CLUSTER_NAME 
 
-# This is a static URL (which references resources based on name/environment)
-curl -o ENV.vars https://raw.githubusercontent.com/cloudxabide/kubernerdes.lab/main/Files/ENV.vars
+# This is a static URL (i.e. I cannot reference $REPO as this is the file that sets the value)
+[ ! -f ENV.vars ] && { curl -o ENV.vars https://raw.githubusercontent.com/cloudxabide/kubernerdes.lab/main/Files/ENV.vars; }
 . ./ENV.vars
 
 # The following is how you create a default clusterconfig
@@ -70,7 +70,7 @@ curl -o hardware.csv ${REPO}main/Files/hardware-${NODE_LAYOUT}.csv
 # However, I have one that I have already modified for my needs
 curl -o $CLUSTER_CONFIG.vanilla ${REPO}main/Files/$CLUSTER_CONFIG_SOURCE
 
-# Retrieve the pub key for the "kubernedes.lab" domain
+# Retrieve the pub key for the "kubernerdes.lab" domain
 export MY_SSH_KEY=$(cat ~/.ssh/*kubernerdes.lab.pub)
 envsubst <  $CLUSTER_CONFIG.vanilla > $CLUSTER_CONFIG
 cat $CLUSTER_CONFIG
@@ -94,3 +94,7 @@ echo "You should now start to power on your NUC, one at a time, and hit F12 unti
 echo "  Wait for the initramfs to finish loading, then move to the next node"; sleep 3
 echo ""
 while sleep 2; do echo -n "Waiting for 'Running'....then will proceed. "; date; docker ps -a | grep boots && break ; done && sleep 30 && docker logs -f $(docker ps -a | grep boots | awk '{ print $1 }')
+
+# Once cluster is built, set the KUBECONFIG (and copy it to html directory)
+export KUBECONFIG=$(find ~/eksa/$CLUSTER_NAME/latest/ -name '*eks-a-cluster.kubeconfig' | sort | tail -1)
+cp $KUBECONFIG /var/www/html/

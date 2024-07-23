@@ -48,7 +48,7 @@ spec:
   osFamily: ubuntu
   templateRef: {}
   users:
-  - name: capv
+  - name: ec2-user
     sshAuthorizedKeys:
     - ssh-rsa "${MY_SSH_KEY}"
 
@@ -62,7 +62,7 @@ spec:
   osFamily: ubuntu
   templateRef: {}
   users:
-  - name: capv
+  - name: ec2-user
     sshAuthorizedKeys:
     - ssh-rsa "${MY_SSH_KEY}"
 

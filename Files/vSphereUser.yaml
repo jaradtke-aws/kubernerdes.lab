@@ -11,16 +11,16 @@ spec:
   vSphereDomain: "vsphere.kubernerdes.lab"  # this should be the domain used when you login, e.g. YourUsername@vsphere.local
   connection:
     server:      "https://vsphere.kubernerdes.lab"
-    insecure:    false
+    insecure:    true 
   objects:
     networks:
-      - !!str    "/kubecuddle/network/DSwitch-VM Network"
+      - !!str    "/kubecuddle/network/DSwitch-VM-Network"
     datastores:
-      - !!str    "/kubecuddle/datastore/Kubernerdes"
+      - !!str    "/kubecuddle/datastore/NVMe-1TB"
     resourcePools:
-      - !!str    "/kubecuddle/host/Kubernerdes" # I do not use a ResourcePool for my Environment
+      - !!str    "/kubecuddle/host/Kubernerdes" # I do not use a ResourcePool for my Environment, therefore set it to the clusterName
     folders:
       - !!str    "/kubecuddle/vm/Kubernerdes"
     templates:
-      - !!str    "/kubecuddle/vm/Templates/MyTemplates"
+      - !!str    "/kubecuddle/vm/Kubernerdes"
 
