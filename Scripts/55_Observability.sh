@@ -21,7 +21,7 @@ kubectl wait \
 	--all CustomResourceDefinition \
 	--namespace=monitoring
 kubectl apply -f manifests/
-while sleep 2; do kubectl get all -n monitoring | egrep 'ContainerCreating|Init' || break; done
+while sleep 2; echo; do kubectl get all -n monitoring | egrep 'ContainerCreating|Init' || break; done
 cd -
 
 ############### ###############
@@ -45,6 +45,7 @@ persistence:
 EOF1
 helm upgrade my-grafana grafana/grafana -f my-grafana-storage.yaml -n $GRAFANA_NAMESPACE 
 cd -
+while sleep 2; echo; do kubectl get all -n monitoring | egrep 'ContainerCreating|Init' || break; done
 
 ############### ###############
 ## Kubernetes Dashbaord (WIP)
@@ -54,6 +55,7 @@ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dash
 kubectl -n kubernetes-dashboard patch svc kubernetes-dashboard-kong-proxy -p='{"spec": {"type": "LoadBalancer"}}'
 
 mkdir kubernetes-dashboard; cd $_
+
 # https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
 cat << EOF3 | tee kubernetes-dashboard-sa.yaml
 ---
