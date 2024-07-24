@@ -31,13 +31,18 @@ done
 FRONTEND_IP=$(kubectl get service ecsdemo-frontend -o json | jq -r '.status.loadBalancer.ingress[].ip')
 echo "Access FrontEnd at: http://$FRONTEND_IP/"
 
-scale_up() {
-kubectl scale deployment ecsdemo-nodejs --replicas=3
-kubectl scale deployment ecsdemo-crystal --replicas=3
-kubectl scale deployment ecsdemo-frontend --replicas=3
+scale_out() {
+kubectl scale deployment ecsdemo-nodejs --replicas=3 -n ecsdemo
+kubectl scale deployment ecsdemo-crystal --replicas=3 -n ecsdemo
+kubectl scale deployment ecsdemo-frontend --replicas=3 -n ecsdemo
+}
+scale_in() {
+kubectl scale deployment ecsdemo-nodejs --replicas=1 -n ecsdemo
+kubectl scale deployment ecsdemo-crystal --replicas=1 -n ecsdemo
+kubectl scale deployment ecsdemo-frontend --replicas=1 -n ecsdemo
 }
 
-while sleep 2; do kubectl get pods | egrep ContainerCreating || break; done
+while sleep 2; do echo; kubectl get pods | egrep ContainerCreating || break; done
 kubectl config set-context --current --namespace=default
 
 exit 0

@@ -16,8 +16,10 @@ SERVICEMAPFILE=./SERVICEMAP.csv
 cat << EOF2 | tee $SERVICEMAPFILE
 #APPNAME|NAMESPACE|PORT
 prometheus-k8s|monitoring|9090
+prometheus-adapter|monitoring|443
 my-grafana|monitoring|80
 hubble-ui|kube-system|80
+trivy-operator|trivy-system|80
 EOF2
 
 grep -v \# $SERVICEMAPFILE | awk -F"|" '{ print $1" "$2 }' | while read -r APPNAME NAMESPACE PORT
@@ -38,6 +40,7 @@ exit 0
 1860 | Node Exporter Full
 14981 | CoreDNS
 18283 | Kubernetes
+17813 | Trivy
 
 # The URL for the prometheus endpoint (to add as a Datasource for Grafana) 
 # http://prometheus-k8s.monitoring:9090
