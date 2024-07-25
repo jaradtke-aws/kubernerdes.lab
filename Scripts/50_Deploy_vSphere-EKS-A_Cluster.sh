@@ -49,7 +49,7 @@ tuftool download ${TMPDIR:-/tmp/bottlerocket-ovas} --target-name "${OVA}" \
 ############# ############# ############# ############# ############# ############# #############
 ## START HERE ## START HERE ## START HERE ## START HERE ## START HERE ## START HERE
 ############# ############# ############# ############# ############# ############# #############
-# Source your VMware info file
+# Source your VMware info file (based on cluster name - this totally just a personal preference/approach)
 . ~/.vsphere-eksa
 
 ## Cleanup existing Docker Containers
@@ -109,6 +109,9 @@ sudo systemctl start isc-dhcp-server.service
 unset KUBECONFIG
 eksctl anywhere create cluster \
    -f  $CLUSTER_CONFIG
+
+export KUBECONFIG=$(find $PWD/ -name "*kubeconfig")
+cp $KUBECONFIG ${HOME}/.kube/
 
 exit 0
 

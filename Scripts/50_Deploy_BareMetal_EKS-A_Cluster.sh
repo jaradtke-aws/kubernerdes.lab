@@ -83,6 +83,9 @@ eksctl anywhere create cluster \
   --hardware-csv hardware.csv \
    -f  $CLUSTER_CONFIG
 
+export KUBECONFIG=$(find $PWD/ -name "*kubeconfig")
+cp $KUBECONFIG ${HOME}/.kube/
+
 exit 0
 
 # Now that you have started the installation, shift focus to your other terminal and watch the pods 
