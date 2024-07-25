@@ -5,7 +5,7 @@
 #      Status: In-Progress | You shoudl run this manually to test
 # Assumptions: That you actually **need** a custom-built Ubuntu image to run your containers
 #              You are using the user: image-builder
-#        Todo:
+#        Todo: need to explore https://anywhere.eks.amazonaws.com/docs/getting-started/vsphere/customize/customize-ovas/
 #  References: https://anywhere.eks.amazonaws.com/docs/osmgmt/artifacts/#building-node-images
 
 # Make sure you're not on the Admin Host
