@@ -12,16 +12,23 @@
 kubectl get events -A --sort-by=.lastTimestamp
 
 install_kubervirt() {
-# Point at latest release
+# Create vms namespace for future use
+kubectl create namespace vms
+
+# Retrive the current RELEASE version
 export KUBEVIRT_RELEASE=$(curl -s https://storage.googleapis.com/kubevirt-prow/release/kubevirt/kubevirt/stable.txt)
+
 # Deploy the KubeVirt operator
 kubectl apply -f https://github.com/kubevirt/kubevirt/releases/download/${KUBEVIRT_RELEASE}/kubevirt-operator.yaml
+
 # Create the KubeVirt CR (instance deployment request) which triggers the actual installation
 kubectl apply -f https://github.com/kubevirt/kubevirt/releases/download/${KUBEVIRT_RELEASE}/kubevirt-cr.yaml
+
 # wait until all KubeVirt components are up
 kubectl -n kubevirt wait kubevirt/kubevirt --for condition=Available
 
 kubectl get kubevirt.kubevirt.io/kubevirt --namespace kubevirt --output=jsonpath="{.status.phase}"
+while sleep 2; do echo; ( kubectl get all -n kubevirt  | grep Deploying; ) || break; done
 }
 
 install_virtctl() {
@@ -30,6 +37,7 @@ ARCH=$(uname -s | tr A-Z a-z)-$(uname -m | sed 's/x86_64/amd64/') || windows-amd
 echo ${ARCH}
 curl -L -o virtctl https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/virtctl-${VERSION}-${ARCH}
 sudo install -m 0755 virtctl /usr/local/bin
+virtctl version
 }
 
 install_cdi() {
