@@ -58,7 +58,7 @@ cd ${EKS_DIR}
 mkdir $CLUSTER_NAME 
 
 # This is a static URL (i.e. I cannot reference $REPO as this is the file that sets the value)
-[ ! -f ENV.vars ] && { curl -o ENV.vars https://raw.githubusercontent.com/cloudxabide/kubernerdes.lab/main/Files/ENV.vars; }
+[ ! -f ENV.vars ] && { curl -o ENV.vars https://raw.githubusercontent.com/jaradtke-aws/kubernerdes.lab/main/Files/ENV.vars; }
 . ./ENV.vars
 
 # The following is how you create a default clusterconfig
